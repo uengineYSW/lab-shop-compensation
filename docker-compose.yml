@@ -21,21 +21,24 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+---
+version: "v1"
+services:
   order:
-    image: <username>/order:v1
-    depends_on:
-      - kafka
+    image: yang1762/order:v1
     ports:
       - 8080:8081
-  inventory:
-    image: <username>/inventory:v1
     depends_on:
       - kafka
-    ports:
-      - 8080:8082
-  delivery:
-    image: <username>/delivery:v1
-    depends_on:
-      - kafka
-    ports:
-      - 8080:8083
+  # inventory:
+  #   image: yang1762/inventory:v1
+  #   depends_on:
+  #     - kafka
+  #   ports:
+  #     - 8080:8082
+  # delivery:
+  #   image: yang1762/delivery:v1
+  #   depends_on:
+  #     - kafka
+  #   ports:
+  #     - 8080:8083

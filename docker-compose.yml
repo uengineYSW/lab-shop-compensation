@@ -30,6 +30,18 @@ services:
       - 8080:8081
     depends_on:
       - kafka
+  inventory:
+    image: yang1762/inventory:v1
+    ports:
+      - 8080:8082
+    depends_on:
+      - kafka
+  delivery:
+    image: yang1762/delivery:v1
+    ports:
+      - 8080:8083
+    depends_on:
+      - kafka
   # inventory:
   #   image: yang1762/inventory:v1
   #   depends_on:
